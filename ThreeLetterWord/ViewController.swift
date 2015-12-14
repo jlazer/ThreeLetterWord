@@ -14,18 +14,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
 
+    let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    var counter = 0
+    var currentLetter:Character!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+        
     }
 
     @IBAction func whenTapped(sender: UITapGestureRecognizer) {
+    
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func getCharacter() {
+        let myRange = Range<String.Index>(start: letters.startIndex.advancedBy(counter), end:
+        letters.startIndex.advancedBy(counter+1))
+        currentLetterLabel.text = letters.substringWithRange(myRange)
+        currentLetter = Character(letters.substringWithRange(myRange))
+        
     }
-
 
 }
-
