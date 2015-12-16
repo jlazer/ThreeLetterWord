@@ -18,10 +18,15 @@ class ViewController: UIViewController {
     let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     var counter = 0
     var currentLetter:Character!
+    var labelArray = [UILabel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getCurrentLetter()
+        labelArray.append(label1)
+        labelArray.append(label2)
+        labelArray.append(label3)
+        
     
         
     }
@@ -29,18 +34,14 @@ class ViewController: UIViewController {
     @IBAction func whenTapped(sender: UITapGestureRecognizer) {
         let selectedPoint = sender.locationInView(self.view)
         print(selectedPoint)
-        if CGRectContainsPoint(label1.frame, selectedPoint)
+        for label in labelArray
         {
-            label1.text = String(currentLetter)
+            if CGRectContainsPoint(label.frame, selectedPoint)
+            {
+                label.text = String(currentLetter)
+            }
         }
-        if CGRectContainsPoint(label2.frame, selectedPoint)
-        {
-            label2.text = String(currentLetter)
-        }
-        if CGRectContainsPoint(label3.frame, selectedPoint)
-        {
-            label3.text = String(currentLetter)
-        }
+        
         counter++
         if counter == 26
         {
