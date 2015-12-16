@@ -42,6 +42,10 @@ class ViewController: UIViewController {
             label3.text = String(currentLetter)
         }
         counter++
+        if counter == 26
+        {
+            reset()
+        }
         getCurrentLetter()
     }
     
@@ -52,5 +56,21 @@ class ViewController: UIViewController {
         currentLetter = Character(letters.substringWithRange(myRange))
         
     }
-
+    
+    func reset()
+    {
+        counter = 0
+        let alert = UIAlertController(title: "Reseting Counter", message: "Hi", preferredStyle: UIAlertControllerStyle.Alert)
+        let okayAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: clearLabels)
+        alert.addAction(okayAction)
+        presentViewController(alert, animated: true, completion: nil)
+    }
+   
+    func clearLabels(Action: UIAlertAction)
+    {
+        label1.text = ""
+        label2.text = ""
+        label3.text = ""
+        
+    }
 }
